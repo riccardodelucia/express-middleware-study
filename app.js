@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const app = express();
 const router = express.Router();
-const fs = require("fs");
+import fs from "fs";
 
 /////////////////////////////////////////////
 // 1. Standard middleware
@@ -47,7 +47,9 @@ router.get("/user/:id", (req, res, next) => {
 
 // synchronous error
 router.get("/error/sync", (req, res, next) => {
-  throw new Error("This is a synchronous error, managed from Express standard error handling mechanism");
+  throw new Error(
+    "This is a synchronous error, managed from Express standard error handling mechanism"
+  );
 });
 
 // error caused into an asynchronous operation.
@@ -107,4 +109,4 @@ app.use(errorMiddleWare1);
 app.use(errorMiddleWare2);
 app.use(errorMiddleWare3);
 
-module.exports = app;
+export default app;
